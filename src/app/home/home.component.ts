@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   dateValue;
   display = false;
   searchMode: boolean;
+  treeMode: boolean;
   currentYear = new Date().getFullYear();
   yearRange = `1000:${this.currentYear}`;
 

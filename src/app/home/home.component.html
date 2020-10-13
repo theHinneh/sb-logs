@@ -1,9 +1,10 @@
 <div class="home">
   <p-fieldset legend="SB Log Checker">
     <span class="p-buttonset">
-        <button (click)="searchMode = true" pButton type="button" label="Search Mode"></button>
-        <button [style]="{marginLeft: '10px'}" (click)="searchMode = false" pButton type="button"
-                label="Tree Mode"></button>
+        <button (click)="treeMode = false" pButton type="button" label="Search Mode"></button>
+        <button [style]="{marginLeft: '10px'}" (click)="treeMode = true" pButton type="button"
+                label="Tree Mode">
+        </button>
       </span>
     <div class="calender">
       <p-calendar inputId="icon" placeholder="Select Date"
@@ -15,12 +16,12 @@
       </p-calendar>
     </div>
     <p-scrollPanel [style]="{width: '100%', height: '100%', overflow: 'auto'}" styleClass="scroll-panel">
-      <p-tree *ngIf="!searchMode" layout="horizontal" selectionMode="single"
+      <p-tree *ngIf="treeMode" layout="horizontal" selectionMode="single"
               [value]="data"
               [(selection)]="selectedFile"
               (onNodeSelect)="nodeSelect($event)">
       </p-tree>
-      <p-tree *ngIf="searchMode" selectionMode="single" filterMode="strict"
+      <p-tree *ngIf="!treeMode" selectionMode="single" filterMode="strict"
               [(selection)]="selectedFile"
               (onNodeSelect)="nodeSelect($event)"
               [value]="data"
