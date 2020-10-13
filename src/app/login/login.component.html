@@ -1,0 +1,19 @@
+<div class="login">
+  <p-card>
+    <div class="p-formgroup-inline">
+      <div class="p-field">
+        <span class="p-float-label">
+          <label for="username" class="p-sr-only">Username</label>
+          <input id="username" type="text" pInputText placeholder="Username" [(ngModel)]="username" name="username">
+        </span>
+      </div>
+      <div class="p-field">
+        <span class="p-float-label">
+          <label for="password" class="p-sr-only">Password</label>
+          <input id="password" type="text" pInputText placeholder="Password" [(ngModel)]="password" name="password">
+        </span>
+      </div>
+      <button (click)="login()" pButton type="button" label="Submit"></button>
+    </div>
+  </p-card>
+</div>

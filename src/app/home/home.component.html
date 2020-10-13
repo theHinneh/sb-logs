@@ -1,0 +1,46 @@
+<div class="home">
+  <p-fieldset legend="SB Log Checker">
+    <span class="p-buttonset">
+        <button (click)="searchMode = true" pButton type="button" label="Search Mode"></button>
+        <button [style]="{marginLeft: '10px'}" (click)="searchMode = false" pButton type="button"
+                label="Tree Mode"></button>
+      </span>
+    <div class="calender">
+      <p-calendar inputId="icon" placeholder="Select Date"
+                  [yearRange]="yearRange"
+                  [monthNavigator]="true"
+                  [yearNavigator]="true"
+                  [(ngModel)]="dateValue"
+                  [showIcon]="true">
+      </p-calendar>
+    </div>
+    <p-scrollPanel [style]="{width: '100%', height: '100%', overflow: 'auto'}" styleClass="scroll-panel">
+      <p-tree *ngIf="!searchMode" layout="horizontal" selectionMode="single"
+              [value]="data"
+              [(selection)]="selectedFile"
+              (onNodeSelect)="nodeSelect($event)">
+      </p-tree>
+      <p-tree *ngIf="searchMode" selectionMode="single" filterMode="strict"
+              [(selection)]="selectedFile"
+              (onNodeSelect)="nodeSelect($event)"
+              [value]="data"
+              [filter]="true" [filterPlaceholder]="'Search for App'">
+      </p-tree>
+
+      <p-dialog [style]="{width: '70vw', 'max-height': '50vh', overflow: 'auto'}" styleClass="mydialog"
+                responsive="true"
+                resizable="true" maximizable="true"
+                header="Logs for app name - 12/12/12" [(visible)]="display">
+        user@host> file show /var/log/processes Feb 22 08:58:24 router1 snmpd[359]:
+        %DAEMON-3-SNMPD_TRAP_WARM_START: trap_generate_warm: SNMP trap: warm start
+        Feb 22 20:35:07 router1 snmpd[359]:
+        %DAEMON-6-SNMPD_THROTTLE_QUEUE_DRAINED: trap_throttle_timer_handler: cleared all throttled traps
+        Feb 23 07:34:56 router1 snmpd[359]:
+        %DAEMON-3-SNMPD_TRAP_WARM_START: trap_generate_warm: SNMP trap: warm start
+        Feb 23 07:38:19 router1 snmpd[359]:
+        %DAEMON-2-SNMPD_TRAP_COLD_START: trap_generate_cold: SNMP trap: cold start
+      </p-dialog>
+
+    </p-scrollPanel>
+  </p-fieldset>
+</div>

@@ -1,0 +1,22 @@
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+:host ::ng-deep {
+  .p-card-body {
+    padding: 5em;
+  }
+
+  .p-formgroup-inline {
+    align-items: inherit;
+    flex-wrap: wrap;
+  }
+
+  .p-field {
+    margin-bottom: 0;
+  }
+}
